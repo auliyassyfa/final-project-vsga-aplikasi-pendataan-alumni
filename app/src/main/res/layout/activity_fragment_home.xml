@@ -6,69 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".fragmentHome">
 
-    <!-- Toolbar di bagian bawah -->
-
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/aboutApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
         android:text="Tentang\nAplikasi"
+        android:textColor="#414249"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="376dp"
-        android:layout_height="126dp"
-        android:layout_margin="20dp"
+        android:id="@+id/descApp"
+        android:layout_width="379dp"
+        android:layout_height="108dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:justificationMode="inter_word"
-        android:text="Aplikasi Data Alumni kami dirancang khusus untuk membantu lembaga pendidikan mengelola dan melacak informasi alumni secara efisien. Dengan fitur yang komprehensif, aplikasi ini memungkinkan pengguna untuk menyimpan, memperbarui, dan mengakses data alumni dengan mudah."
+        android:text="AlumniConnect adalah gerbang untuk membangun hubungan dengan institusi pendidikan Anda dan komunitas lulusannya. Tetap terhubung, terus mendapatkan informasi, dan tumbuh baik secara pribadi maupun profesional dengan AlumniConnect."
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="375dp"
-        android:background="#9FD4FF"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutApp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        app:srcCompat="@drawable/newsicon"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="676dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        app:srcCompat="@drawable/profileicon"
-        tools:layout_editor_absoluteX="310dp"
-        tools:layout_editor_absoluteY="676dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        app:srcCompat="@drawable/iconhome"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="676dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

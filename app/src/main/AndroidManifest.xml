@@ -13,6 +13,24 @@
         android:theme="@style/Theme.FinalProjectVsga"
         tools:targetApi="31">
         <activity
+            android:name=".tambahAlumni"
+            android:exported="false" />
+        <activity
+            android:name=".itemList"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentHone"
+            android:exported="false" />
+        <activity
+            android:name=".editData"
+            android:exported="false" />
+        <activity
+            android:name=".dataAlumni"
+            android:exported="false" />
+        <activity
+            android:name=".detailBerita"
+            android:exported="false" />
+        <activity
             android:name=".profile"
             android:exported="false" />
         <activity
