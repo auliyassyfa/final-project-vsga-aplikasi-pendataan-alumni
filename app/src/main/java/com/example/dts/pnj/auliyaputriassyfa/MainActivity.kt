@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
             var selectedFragment: Fragment? = null
 
             when (item.itemId) {
-                R.id.nav_home -> selectedFragment = HomeFragment()
-                R.id.nav_news -> selectedFragment = BeritaFragment()
-                R.id.nav_profile -> selectedFragment = ProfileFragment()
+                R.id.nav_home -> selectedFragment = fragmentHome()
+                R.id.nav_news -> selectedFragment = fragmentBerita()
+                R.id.nav_profile -> selectedFragment = Profile()
             }
             if (selectedFragment != null) {
                 supportFragmentManager.beginTransaction()
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentLayout, HomeFragment())
+                .replace(R.id.fragmentLayout, fragmentHome())
                 .commit()
         }
 
@@ -56,24 +56,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.alumni_nav_menu, menu)
+        menuInflater.inflate(R.menu.alumni_nav, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.nav_add_alumni -> {
-                val intent = Intent(this, AddAlumniActivity::class.java)
+                val intent = Intent(this, tambahAlumni::class.java)
                 startActivity(intent)
                 true
             }
             R.id.nav_data_alumni -> {
-                val intent = Intent(this, DataAlumniActivity::class.java)
+                val intent = Intent(this, dataAlumni::class.java)
                 startActivity(intent)
                 true
             }
             R.id.nav_logout -> {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, Login::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()
