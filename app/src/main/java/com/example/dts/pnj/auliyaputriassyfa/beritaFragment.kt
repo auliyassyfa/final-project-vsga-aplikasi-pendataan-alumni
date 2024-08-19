@@ -5,16 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dts.pnj.auliyaputriassyfa.database.databaseHelper
 
-class fragmentBerita : Fragment() {
+class beritaFragment : Fragment() {
     private var columnCount = 1
     private lateinit var databaseHelper: databaseHelper
 
@@ -30,7 +26,7 @@ class fragmentBerita : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_news_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_berita_list, container, false)
 
         if (view is RecyclerView) {
             with(view) {
@@ -80,7 +76,7 @@ class fragmentBerita : Fragment() {
 
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            NewsFragment().apply {
+            beritaFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

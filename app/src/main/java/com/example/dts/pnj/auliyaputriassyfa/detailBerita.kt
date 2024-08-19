@@ -16,9 +16,9 @@ class detailBerita : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.gambarBerita)
 
         val intent = intent
-        val judul = intent.getStringExtra("EXTRA_TITLE")
-        val isi = intent.getStringExtra("EXTRA_CONTENT")
-        val gambar = intent.getStringExtra("EXTRA_IMAGE_PATH")
+        val title = intent.getStringExtra("EXTRA_TITLE")
+        val content = intent.getStringExtra("EXTRA_CONTENT")
+        val path_image = intent.getStringExtra("EXTRA_IMAGE_PATH")
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -33,7 +33,7 @@ class detailBerita : AppCompatActivity() {
         contentTextView.text = content
 
         // Load the image from drawable resource
-        val imageResource = when (imagePath) {
+        val imageResource = when (path_image) {
             "drawable/beritahacker" -> R.drawable.beritahacker
             "drawable/beritamediamasa" -> R.drawable.beritamediamasa
             "drawable/beritapolitik" -> R.drawable.beritapolitik

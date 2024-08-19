@@ -22,7 +22,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TEMPATLAHIR = "tempat_lahir";
     public static final String COLUMN_TGL_LAHIR = "tanggal_lahir";
     public static final String COLUMN_ALAMAT = "alamat";
-    public static final String COLUMN_NOHP = "  noHP";
+    public static final String COLUMN_NOHP = "noHP";
     public static final String COLUMN_THNMASUK = "tahun_masuk";
     public static final String COLUMN_THNLULUS = "tahun_lulus";
     public static final String COLUMN_PEKERJAAN = "pekerjaan";
@@ -142,18 +142,16 @@ public class databaseHelper extends SQLiteOpenHelper {
         );
 
         List<String> imageResourceIds = Arrays.asList(
-                "drawable/imageThre",
-                "drawable/ferrari",
-                "drawable/redbull",
-                "drawable/charlewis",
-                "drawable/rb19",
-                "drawable/newey",
-                "drawable/wolf",
-                "drawable/rally",
-                "drawable/fiarules",
-                "drawable/vegasgp",
-                "drawable/schumi"
-
+                "drawable/imageThreadsApp",
+                "drawable/geminiAI",
+                "drawable/imageAnggrek",
+                "drawable/beritahacker",
+                "drawable/imageDeadpool3",
+                "drawable/beritamediamasa",
+                "drawable/imageElonMusk",
+                "drawable/imageLaptopVirus",
+                "drawable/atlantisjpg",
+                "drawable/vegasgp"
         );
 
         for (int i = 0; i < titles.size(); i++) {

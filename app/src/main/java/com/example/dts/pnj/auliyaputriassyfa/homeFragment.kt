@@ -9,7 +9,7 @@ import android.view.ViewGroup
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class fragmentHome : Fragment() {
+class homeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -25,14 +25,14 @@ class fragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home2, container, false)
     }
 
     companion object {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            fragmentHome().apply {
+            homeFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
