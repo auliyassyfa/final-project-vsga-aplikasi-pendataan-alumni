@@ -142,16 +142,16 @@ public class databaseHelper extends SQLiteOpenHelper {
         );
 
         List<String> imageResourceIds = Arrays.asList(
-                "drawable/imageThreadsApp",
-                "drawable/geminiAI",
-                "drawable/imageAnggrek",
+                "drawable/imagethreadsapp",
+                "drawable/aigemini",
+                "drawable/imageanggrek",
                 "drawable/beritahacker",
-                "drawable/imageDeadpool3",
+                "drawable/imagedeadpool3",
                 "drawable/beritamediamasa",
-                "drawable/imageElonMusk",
-                "drawable/imageLaptopVirus",
-                "drawable/atlantisjpg",
-                "drawable/vegasgp"
+                "drawable/imageelonmusk",
+                "drawable/imagesafari",
+                "drawable/imagelaptopvirus",
+                "drawable/atlantisjpg"
         );
 
         for (int i = 0; i < titles.size(); i++) {

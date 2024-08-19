@@ -27,14 +27,15 @@ class MyNewsRecyclerViewAdapter(
 
         // Load the image from drawable resource
         val imageResource = when (item.pathImage) {
-            "drawable/imageThreadsApp"-> R.drawable.imageThreadsApp
-            "drawable/geminiAI"-> R.drawable.geminiAI
-            "drawable/imageAnggrek"-> R.drawable.imageAnggrek
+            "drawable/imagethreadsapp"-> R.drawable.imagethreadsapp
+            "drawable/aigemini"-> R.drawable.aigemini
+            "drawable/imageanggrek"-> R.drawable.imageanggrek
             "drawable/beritahacker"-> R.drawable.beritahacker
-            "drawable/imageDeadpool3"-> R.drawable.imageDeadpool3
+            "drawable/imagedeadpool3"-> R.drawable.imagedeadpool3
             "drawable/beritamediamasa"-> R.drawable.beritamediamasa
-            "drawable/imageElonMusk"-> R.drawable.imageElonMusk
-            "drawable/imageLaptopVirus"-> R.drawable.imageLaptopVirus
+            "drawable/imageelonmusk"-> R.drawable.imageelonmusk
+            "drawable/imagesafari"-> R.drawable.imagesafari
+            "drawable/imagelaptopvirus"-> R.drawable.imagelaptopvirus
             "drawable/atlantisjpg"-> R.drawable.atlantisjpg
             else -> R.drawable.imageberita // Placeholder or default image
         }

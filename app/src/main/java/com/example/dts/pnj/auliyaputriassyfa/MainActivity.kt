@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
             var selectedFragment: Fragment? = null
 
             when (item.itemId) {
-                R.id.nav_home -> selectedFragment = fragmentHome()
-                R.id.nav_news -> selectedFragment = fragmentBerita()
-                R.id.nav_profile -> selectedFragment = Profile()
+                R.id.nav_home -> selectedFragment = homeFragment()
+                R.id.nav_news -> selectedFragment = beritaFragment()
+                R.id.nav_profile -> selectedFragment = profileFragment()
             }
             if (selectedFragment != null) {
                 supportFragmentManager.beginTransaction()
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentLayout, fragmentHome())
+                .replace(R.id.fragmentLayout, homeFragment())
                 .commit()
         }
 
