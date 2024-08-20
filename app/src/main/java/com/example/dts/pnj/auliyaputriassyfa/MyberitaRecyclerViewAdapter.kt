@@ -4,7 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dts.pnj.AuliyaPutriAssyfa.detailBerita
 import com.example.dts.pnj.auliyaputriassyfa.databinding.FragmentBeritaBinding
 
 class MyNewsRecyclerViewAdapter(

@@ -33,21 +33,24 @@ class MainActivity : AppCompatActivity() {
             var selectedFragment: Fragment? = null
 
             when (item.itemId) {
-                R.id.nav_home -> selectedFragment = homeFragment()
-                R.id.nav_news -> selectedFragment = beritaFragment()
-                R.id.nav_profile -> selectedFragment = profileFragment()
+                R.id.nav_home -> selectedFragment = HomeFragment()
+                R.id.nav_news -> selectedFragment = BeritaFragment()
+                R.id.nav_profile -> selectedFragment = ProfileFragment()
             }
+
             if (selectedFragment != null) {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentLayout, selectedFragment)
                     .commit()
             }
+
             true
+
         }
-        
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentLayout, homeFragment())
+                .replace(R.id.fragmentLayout, HomeFragment())
                 .commit()
         }
 
@@ -86,9 +89,9 @@ class MainActivity : AppCompatActivity() {
     private fun writeUserInfoToFile() {
         val fileName = "user_info.txt"
         val fileContent = """
-            auliya putri assyfa
-            auliya@gmail.com
-            50422300
+            Dimas Febriyanto
+            dimas@example.com
+            50422430
             2IA21
         """.trimIndent()
 

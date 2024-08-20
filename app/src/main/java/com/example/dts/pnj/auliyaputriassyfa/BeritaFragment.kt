@@ -8,18 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dts.pnj.auliyaputriassyfa.database.databaseHelper
+import com.example.dts.pnj.auliyaputriassyfa.database.DatabaseHelper
 
-class beritaFragment : Fragment() {
+class BeritaFragment : Fragment() {
     private var columnCount = 1
-    private lateinit var databaseHelper: databaseHelper
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
-        databaseHelper = databaseHelper(requireContext())
+        databaseHelper = DatabaseHelper(requireContext())
     }
 
     override fun onCreateView(
@@ -43,12 +43,12 @@ class beritaFragment : Fragment() {
 
         // Query to get all news from the database
         val cursor: Cursor = db.query(
-            databaseHelper.TABLE_NEWS,
+            DatabaseHelper.TABLE_NEWS,
             arrayOf(
-                databaseHelper.COLUMN_ID,
-                databaseHelper.COLUMN_TITLE,
-                databaseHelper.COLUMN_CONTENT,
-                databaseHelper.COLUMN_PATH_IMAGE
+                DatabaseHelper.COLUMN_ID,
+                DatabaseHelper.COLUMN_TITLE,
+                DatabaseHelper.COLUMN_CONTENT,
+                DatabaseHelper.COLUMN_PATH_IMAGE
             ),
             null,
             null,
@@ -59,10 +59,10 @@ class beritaFragment : Fragment() {
 
         with(cursor) {
             while (moveToNext()) {
-                val id = getLong(getColumnIndexOrThrow(databaseHelper.COLUMN_ID))
-                val title = getString(getColumnIndexOrThrow(databaseHelper.COLUMN_TITLE))
-                val content = getString(getColumnIndexOrThrow(databaseHelper.COLUMN_CONTENT))
-                val pathImage = getString(getColumnIndexOrThrow(databaseHelper.COLUMN_PATH_IMAGE))
+                val id = getLong(getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID))
+                val title = getString(getColumnIndexOrThrow(DatabaseHelper.COLUMN_TITLE))
+                val content = getString(getColumnIndexOrThrow(DatabaseHelper.COLUMN_CONTENT))
+                val pathImage = getString(getColumnIndexOrThrow(DatabaseHelper.COLUMN_PATH_IMAGE))
                 newsList.add(NewsItem(id, title, content, pathImage))
             }
             close()
@@ -76,7 +76,7 @@ class beritaFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            beritaFragment().apply {
+            BeritaFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

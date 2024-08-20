@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Edit"
+            android:text="Edit Data"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -133,10 +133,10 @@
                 android:id="@+id/btnDelete"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Delete"
-                android:layout_marginLeft="10dp"
-                tools:backgroundTint="#3F51B5" />
+                tools:backgroundTint="#BF0746" />
         </LinearLayout>
     </LinearLayout>
 

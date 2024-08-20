@@ -1,4 +1,4 @@
-package com.example.dts.pnj.AuliyaPutriAssyfa
+package com.example.dts.pnj.auliyaputriassyfa
 
 import android.os.Bundle
 import android.widget.ImageView

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.dts.pnj.auliyaputriassyfa.database.databaseHelper;
+import com.example.dts.pnj.auliyaputriassyfa.database.DatabaseHelper;
 import com.example.dts.pnj.auliyaputriassyfa.model.user;
 
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import java.util.List;
 
 public class userRepository {
     private SQLiteDatabase database;
-    private databaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     private Context context;
 
     public userRepository(Context context) {
         this.context = context;
-        dbHelper = new databaseHelper(context);
+        dbHelper = new DatabaseHelper(context);
     }
 
     public void open() {
@@ -41,52 +41,52 @@ public class userRepository {
 
     public long createUser(String nama, String npm, String tempatLahir, String tglLahir, String alamat, String noHP, String thnMasuk, String thnLulus, String pekerjaan, String jabatan) {
         ContentValues values = new ContentValues();
-        values.put(databaseHelper.COLUMN_NAMA, nama);
-        values.put(databaseHelper.COLUMN_NPM, npm);
-        values.put(databaseHelper.COLUMN_TEMPATLAHIR, tempatLahir);
-        values.put(databaseHelper.COLUMN_TGL_LAHIR, tglLahir);
-        values.put(databaseHelper.COLUMN_ALAMAT, alamat);
-        values.put(databaseHelper.COLUMN_NOHP, noHP);
-        values.put(databaseHelper.COLUMN_THNMASUK, thnMasuk);
-        values.put(databaseHelper.COLUMN_THNLULUS, thnLulus);
-        values.put(databaseHelper.COLUMN_PEKERJAAN, pekerjaan);
-        values.put(databaseHelper.COLUMN_JABATAN, jabatan);
+        values.put(DatabaseHelper.COLUMN_NAMA, nama);
+        values.put(DatabaseHelper.COLUMN_NPM, npm);
+        values.put(DatabaseHelper.COLUMN_TEMPATLAHIR, tempatLahir);
+        values.put(DatabaseHelper.COLUMN_TGL_LAHIR, tglLahir);
+        values.put(DatabaseHelper.COLUMN_ALAMAT, alamat);
+        values.put(DatabaseHelper.COLUMN_NOHP, noHP);
+        values.put(DatabaseHelper.COLUMN_THNMASUK, thnMasuk);
+        values.put(DatabaseHelper.COLUMN_THNLULUS, thnLulus);
+        values.put(DatabaseHelper.COLUMN_PEKERJAAN, pekerjaan);
+        values.put(DatabaseHelper.COLUMN_JABATAN, jabatan);
 
-        return database.insert(databaseHelper.TABLE_USER, null, values);
+        return database.insert(DatabaseHelper.TABLE_USER, null, values);
     }
 
     public List<user> getAllUsers() {
         List<user> users = new ArrayList<>();
         Cursor cursor = null;
         try {
-            cursor = database.query(databaseHelper.TABLE_USER,
+            cursor = database.query(DatabaseHelper.TABLE_USER,
                     new String[]{
-                            databaseHelper.COLUMN_ID,
-                            databaseHelper.COLUMN_NAMA,
-                            databaseHelper.COLUMN_NPM,
-                            databaseHelper.COLUMN_TEMPATLAHIR,
-                            databaseHelper.COLUMN_TGL_LAHIR,
-                            databaseHelper.COLUMN_ALAMAT,
-                            databaseHelper.COLUMN_NOHP,
-                            databaseHelper.COLUMN_THNMASUK,
-                            databaseHelper.COLUMN_THNLULUS,
-                            databaseHelper.COLUMN_PEKERJAAN,
-                            databaseHelper.COLUMN_JABATAN
+                            DatabaseHelper.COLUMN_ID,
+                            DatabaseHelper.COLUMN_NAMA,
+                            DatabaseHelper.COLUMN_NPM,
+                            DatabaseHelper.COLUMN_TEMPATLAHIR,
+                            DatabaseHelper.COLUMN_TGL_LAHIR,
+                            DatabaseHelper.COLUMN_ALAMAT,
+                            DatabaseHelper.COLUMN_NOHP,
+                            DatabaseHelper.COLUMN_THNMASUK,
+                            DatabaseHelper.COLUMN_THNLULUS,
+                            DatabaseHelper.COLUMN_PEKERJAAN,
+                            DatabaseHelper.COLUMN_JABATAN
                     },
                     null, null, null, null, null);
 
             if (cursor != null && cursor.getCount() > 0) {
-                int idIndex = cursor.getColumnIndex(databaseHelper.COLUMN_ID);
-                int namaIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NAMA);
-                int npmIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NPM);
-                int tempatLahirIndex = cursor.getColumnIndex(databaseHelper.COLUMN_TEMPATLAHIR);
-                int tglLahirIndex = cursor.getColumnIndex(databaseHelper.COLUMN_TGL_LAHIR);
-                int alamatIndex = cursor.getColumnIndex(databaseHelper.COLUMN_ALAMAT);
-                int noHpIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NOHP);
-                int thnMasukIndex = cursor.getColumnIndex(databaseHelper.COLUMN_THNMASUK);
-                int thnLulusIndex = cursor.getColumnIndex(databaseHelper.COLUMN_THNLULUS);
-                int pekerjaanIndex = cursor.getColumnIndex(databaseHelper.COLUMN_PEKERJAAN);
-                int jabatanIndex = cursor.getColumnIndex(databaseHelper.COLUMN_JABATAN);
+                int idIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ID);
+                int namaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NAMA);
+                int npmIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NPM);
+                int tempatLahirIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_TEMPATLAHIR);
+                int tglLahirIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_TGL_LAHIR);
+                int alamatIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ALAMAT);
+                int noHpIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NOHP);
+                int thnMasukIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_THNMASUK);
+                int thnLulusIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_THNLULUS);
+                int pekerjaanIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_PEKERJAAN);
+                int jabatanIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_JABATAN);
 
                 cursor.moveToFirst();
                 do {
@@ -121,34 +121,34 @@ public class userRepository {
         user user = null;
         Cursor cursor = null;
         try {
-            cursor = database.query(databaseHelper.TABLE_USER,
-                    new String[]{databaseHelper.COLUMN_ID,
-                            databaseHelper.COLUMN_NAMA,
-                            databaseHelper.COLUMN_NPM,
-                            databaseHelper.COLUMN_TEMPATLAHIR,
-                            databaseHelper.COLUMN_TGL_LAHIR,
-                            databaseHelper.COLUMN_ALAMAT,
-                            databaseHelper.COLUMN_NOHP,
-                            databaseHelper.COLUMN_THNMASUK,
-                            databaseHelper.COLUMN_THNLULUS,
-                            databaseHelper.COLUMN_PEKERJAAN,
-                            databaseHelper.COLUMN_JABATAN},
-                    databaseHelper.COLUMN_ID + " = ?",
+            cursor = database.query(DatabaseHelper.TABLE_USER,
+                    new String[]{DatabaseHelper.COLUMN_ID,
+                            DatabaseHelper.COLUMN_NAMA,
+                            DatabaseHelper.COLUMN_NPM,
+                            DatabaseHelper.COLUMN_TEMPATLAHIR,
+                            DatabaseHelper.COLUMN_TGL_LAHIR,
+                            DatabaseHelper.COLUMN_ALAMAT,
+                            DatabaseHelper.COLUMN_NOHP,
+                            DatabaseHelper.COLUMN_THNMASUK,
+                            DatabaseHelper.COLUMN_THNLULUS,
+                            DatabaseHelper.COLUMN_PEKERJAAN,
+                            DatabaseHelper.COLUMN_JABATAN},
+                    DatabaseHelper.COLUMN_ID + " = ?",
                     new String[]{String.valueOf(id)},
                     null, null, null);
 
             if (cursor != null && cursor.moveToFirst()) {
-                int idIndex = cursor.getColumnIndex(databaseHelper.COLUMN_ID);
-                int namaIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NAMA);
-                int npmIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NPM);
-                int tempatLahirIndex = cursor.getColumnIndex(databaseHelper.COLUMN_TEMPATLAHIR);
-                int tglLahirIndex = cursor.getColumnIndex(databaseHelper.COLUMN_TGL_LAHIR);
-                int alamatIndex = cursor.getColumnIndex(databaseHelper.COLUMN_ALAMAT);
-                int noHPIndex = cursor.getColumnIndex(databaseHelper.COLUMN_NOHP);
-                int thnMasukIndex = cursor.getColumnIndex(databaseHelper.COLUMN_THNMASUK);
-                int thnLulusIndex = cursor.getColumnIndex(databaseHelper.COLUMN_THNLULUS);
-                int pekerjaanIndex = cursor.getColumnIndex(databaseHelper.COLUMN_PEKERJAAN);
-                int jabatanIndex = cursor.getColumnIndex(databaseHelper.COLUMN_JABATAN);
+                int idIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ID);
+                int namaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NAMA);
+                int npmIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NPM);
+                int tempatLahirIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_TEMPATLAHIR);
+                int tglLahirIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_TGL_LAHIR);
+                int alamatIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ALAMAT);
+                int noHPIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_NOHP);
+                int thnMasukIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_THNMASUK);
+                int thnLulusIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_THNLULUS);
+                int pekerjaanIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_PEKERJAAN);
+                int jabatanIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_JABATAN);
 
                 if (idIndex != -1 && namaIndex != -1 && alamatIndex != -1) {
                     long userId = cursor.getLong(idIndex);
@@ -181,25 +181,25 @@ public class userRepository {
 
     public int updateUser(long id, String s, String nama, String npm, String tempatLahir, String tglLahir, String alamat, String noHP, String thnMasuk, String thnLulus, String pekerjaan, String jabatan) {
         ContentValues values = new ContentValues();
-        values.put(databaseHelper.COLUMN_NAMA, nama);
-        values.put(databaseHelper.COLUMN_NPM, npm);
-        values.put(databaseHelper.COLUMN_TEMPATLAHIR, tempatLahir);
-        values.put(databaseHelper.COLUMN_TGL_LAHIR, tglLahir);
-        values.put(databaseHelper.COLUMN_ALAMAT, alamat);
-        values.put(databaseHelper.COLUMN_NOHP, noHP);
-        values.put(databaseHelper.COLUMN_THNMASUK, thnMasuk);
-        values.put(databaseHelper.COLUMN_THNLULUS, thnLulus);
-        values.put(databaseHelper.COLUMN_PEKERJAAN, pekerjaan);
-        values.put(databaseHelper.COLUMN_JABATAN, jabatan);
+        values.put(DatabaseHelper.COLUMN_NAMA, nama);
+        values.put(DatabaseHelper.COLUMN_NPM, npm);
+        values.put(DatabaseHelper.COLUMN_TEMPATLAHIR, tempatLahir);
+        values.put(DatabaseHelper.COLUMN_TGL_LAHIR, tglLahir);
+        values.put(DatabaseHelper.COLUMN_ALAMAT, alamat);
+        values.put(DatabaseHelper.COLUMN_NOHP, noHP);
+        values.put(DatabaseHelper.COLUMN_THNMASUK, thnMasuk);
+        values.put(DatabaseHelper.COLUMN_THNLULUS, thnLulus);
+        values.put(DatabaseHelper.COLUMN_PEKERJAAN, pekerjaan);
+        values.put(DatabaseHelper.COLUMN_JABATAN, jabatan);
 
-        return database.update(databaseHelper.TABLE_USER, values,
-                databaseHelper.COLUMN_ID + " = ?",
+        return database.update(DatabaseHelper.TABLE_USER, values,
+                DatabaseHelper.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(id)});
     }
 
     public void deleteUser(long id) {
-        database.delete(databaseHelper.TABLE_USER,
-                databaseHelper.COLUMN_ID + " = ?",
+        database.delete(DatabaseHelper.TABLE_USER,
+                DatabaseHelper.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(id)});
     }
 }
