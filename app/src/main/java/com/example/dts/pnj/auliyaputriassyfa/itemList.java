@@ -9,20 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dts.pnj.auliyaputriassyfa.model.user;
+import com.example.dts.pnj.auliyaputriassyfa.model.User;
 
 import java.util.List;
 
 public class itemList extends RecyclerView.Adapter<itemList.ItemViewHolder> {
 
-    private List<user> userList;
+    private List<User> userList;
     private OnItemLongClickListener onItemLongClickListener;
 
     public interface OnItemLongClickListener {
-        void onItemLongClick(user user);
+        void onItemLongClick(User user);
     }
 
-    public itemList(List<user> userList, OnItemLongClickListener listener) {
+    public itemList(List<User> userList, OnItemLongClickListener listener) {
         this.userList = userList;
         this.onItemLongClickListener = listener;
     }
@@ -36,12 +36,12 @@ public class itemList extends RecyclerView.Adapter<itemList.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        user user = userList.get(position);
-        holder.tvName.setText(user.getNama());
-        holder.tvNim.setText(user.getNpm());
+        User user = userList.get(position);
+        holder.tvName.setText(user.getName());
+        holder.tvNim.setText(user.getNim());
 
         holder.itemView.setOnLongClickListener(v -> {
-            Log.d("ItemListAct", "Item long clicked: " +  user.getNama());
+            Log.d("ItemListAct", "Item long clicked: " +  user.getName());
             if (onItemLongClickListener != null) {
                 onItemLongClickListener.onItemLongClick(user);
             }
@@ -54,7 +54,7 @@ public class itemList extends RecyclerView.Adapter<itemList.ItemViewHolder> {
         return userList.size();
     }
 
-    public void updateUserList(List<user> userList) {
+    public void updateUserList(List<User> userList) {
         this.userList = userList;
     }
 
@@ -64,8 +64,8 @@ public class itemList extends RecyclerView.Adapter<itemList.ItemViewHolder> {
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tvNama);
-            tvNim = itemView.findViewById(R.id.tvNpm);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvNim = itemView.findViewById(R.id.tvNim);
         }
     }
 }

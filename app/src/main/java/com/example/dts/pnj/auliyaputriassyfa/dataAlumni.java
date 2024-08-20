@@ -16,13 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import com.example.dts.pnj.auliyaputriassyfa.model.user;
-import com.example.dts.pnj.auliyaputriassyfa.repository.userRepository;
+import com.example.dts.pnj.auliyaputriassyfa.model.User;
+import com.example.dts.pnj.auliyaputriassyfa.repository.UserRepository;
 
 public class dataAlumni extends AppCompatActivity {
     private RecyclerView recyclerView;
     private itemList itemListNameAdapter;
-    private userRepository userRepository;
+    private UserRepository userRepository;
 
 
     @Override
@@ -52,10 +52,10 @@ public class dataAlumni extends AppCompatActivity {
     }
 
     private void loadUserData() {
-        userRepository = new userRepository(this);
+        userRepository = new UserRepository(this);
         userRepository.open();
 
-        List<user> userList = userRepository.getAllUsers();
+        List<User> userList = userRepository.getAllUsers();
         if (itemListNameAdapter == null) {
             itemListNameAdapter = new itemList(userList, this::showOptionsDialog);
             recyclerView.setAdapter(itemListNameAdapter);
@@ -67,8 +67,8 @@ public class dataAlumni extends AppCompatActivity {
         userRepository.close();
     }
 
-    private void showOptionsDialog(user user) {
-        Log.d("MainActivity", "showOptionsDialog called for user: " + user.getNama());
+    private void showOptionsDialog(User user) {
+        Log.d("MainActivity", "showOptionsDialog called for user: " + user.getName());
         new AlertDialog.Builder(this)
                 .setItems(new String[]{"Update", "Delete"}, (dialog, which) -> {
                     switch (which) {
@@ -85,7 +85,7 @@ public class dataAlumni extends AppCompatActivity {
                 .show();
     }
 
-    private void deleteUser(user user) {
+    private void deleteUser(User user) {
         userRepository.open();
         userRepository.deleteUser(user.getId());
         userRepository.close();

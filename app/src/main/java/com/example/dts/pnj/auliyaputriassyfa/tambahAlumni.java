@@ -12,11 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-;import com.example.dts.pnj.auliyaputriassyfa.repository.userRepository;
+import com.example.dts.pnj.auliyaputriassyfa.repository.UserRepository;
 
 public class tambahAlumni extends AppCompatActivity {
 
-    private EditText editNama, editAlamat, editNpm, editTempatLahir, editTglLahir, editThnMasuk, editThnLulus, editPekerjaan, editJabatan, editNoHP;
+    private EditText editName, editAddress, editNim, editTempatLahir, editTglLahir, editMasuk, editLulus, editJob, editJabatan, editTlp;
     private Button btnSubmit, btnCancel;
     private ImageButton btnBack;
 
@@ -36,21 +36,21 @@ public class tambahAlumni extends AppCompatActivity {
 
     void initializeOnClickListeners() {
         btnSubmit.setOnClickListener(v -> {
-            String nama = editNama.getText().toString();
-            String alamat = editAlamat.getText().toString();
-            String npm = editNpm.getText().toString().trim();
-            String tempatlahir = editTempatLahir.getText().toString().trim();
-            String tglLahir = editTglLahir.getText().toString().trim();
-            String thnmasuk = editThnMasuk.getText().toString().trim();
-            String thnlulus = editThnLulus.getText().toString().trim();
-            String pekerjaan = editPekerjaan.getText().toString().trim();
-            String jabatan = editJabatan.getText().toString().trim();
-            String noHP = editNoHP.getText().toString().trim();
+            String name = editName.getText().toString();
+            String domisili = editAddress.getText().toString();
+            String nim = editNim.getText().toString().trim();
+            String tmptlahir = editTempatLahir.getText().toString().trim();
+            String tgllahir = editTglLahir.getText().toString().trim();
+            String thnmasuk = editMasuk.getText().toString().trim();
+            String thnlulus = editLulus.getText().toString().trim();
+            String job = editJob.getText().toString().trim();
+            String jbtn = editJabatan.getText().toString().trim();
+            String tlp = editTlp.getText().toString().trim();
 
-            if (nama.isEmpty() || alamat.isEmpty()) {
+            if (name.isEmpty() || domisili.isEmpty()) {
                 Toast.makeText(tambahAlumni.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             } else {
-                insertDataToSQLite(nama, npm, tempatlahir, tglLahir, alamat, noHP, thnmasuk, thnlulus, pekerjaan, jabatan);
+                insertDataToSQLite(name, nim, tmptlahir, tgllahir, domisili, tlp, thnmasuk, thnlulus, job, jbtn);
                 Toast.makeText(tambahAlumni.this, "User data submitted", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -66,25 +66,25 @@ public class tambahAlumni extends AppCompatActivity {
     }
 
     void initalizeViews() {
-        editNama = findViewById(R.id.editNama);
-        editAlamat = findViewById(R.id.editAlamat);
-        editNpm = findViewById(R.id.editNpm);
+        editName = findViewById(R.id.editName);
+        editAddress = findViewById(R.id.editAddress);
+        editNim = findViewById(R.id.editNim);
         editTempatLahir = findViewById(R.id.editTempatLahir);
         editTglLahir = findViewById(R.id.editTglLahir);
-        editThnMasuk = findViewById(R.id.editThnMasuk);
-        editThnLulus = findViewById(R.id.editThnLulus);
-        editPekerjaan = findViewById(R.id.editPekerjaan);
+        editMasuk = findViewById(R.id.editMasuk);
+        editLulus = findViewById(R.id.editLulus);
+        editJob = findViewById(R.id.editJob);
         editJabatan = findViewById(R.id.editJabatan);
-        editNoHP = findViewById(R.id.editNoHP);
+        editTlp = findViewById(R.id.editTlp);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnCancel = findViewById(R.id.btnCancel);
         btnBack = findViewById(R.id.btnBack);
     }
 
-    void insertDataToSQLite(String nama, String npm, String tempatLahir, String tanggalLahir, String alamat, String noHP, String tahunMasuk, String tahunLulus, String pekerjaan, String jabatan) {
-        userRepository userRepository = new userRepository(this);
+    void insertDataToSQLite(String name, String nim, String tempatLahir, String tanggalLahir, String alamat, String telepon, String tahunMasuk, String tahunLulus, String job, String jabatan) {
+        UserRepository userRepository = new UserRepository(this);
         userRepository.open();
-        userRepository.createUser(nama, npm, tempatLahir, tanggalLahir, alamat, noHP, tahunMasuk, tahunLulus, pekerjaan, jabatan);
+        userRepository.createUser(name, nim, tempatLahir, tanggalLahir, alamat, telepon, tahunMasuk, tahunLulus, job, jabatan);
         userRepository.close();
     }
 }

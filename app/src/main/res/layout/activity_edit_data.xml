@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Edit Data"
+            android:text="Edit"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -45,14 +45,14 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <EditText
-            android:id="@+id/editNama"
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Masukkan nama"/>
 
         <EditText
-            android:id="@+id/editNpm"
+            android:id="@+id/editNim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -73,35 +73,35 @@
             android:hint="Tanggal Lahir"/>
 
         <EditText
-            android:id="@+id/editAlamat"
+            android:id="@+id/editAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Alamat"/>
 
         <EditText
-            android:id="@+id/editNoHP"
+            android:id="@+id/editTlp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Tlp/Hp"/>
 
         <EditText
-            android:id="@+id/editThnMasuk"
+            android:id="@+id/editMasuk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Tahun Masuk"/>
 
         <EditText
-            android:id="@+id/editThnLulus"
+            android:id="@+id/editLulus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Tahun Lulus"/>
 
         <EditText
-            android:id="@+id/editPekerjaan"
+            android:id="@+id/editJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -127,16 +127,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Submit"
-                tools:backgroundTint="#232B57" />
+                tools:backgroundTint="#3F51B5" />
 
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:text="Delete"
-                tools:backgroundTint="#BF0746" />
+                android:layout_marginLeft="10dp"
+                tools:backgroundTint="#3F51B5" />
         </LinearLayout>
     </LinearLayout>
 

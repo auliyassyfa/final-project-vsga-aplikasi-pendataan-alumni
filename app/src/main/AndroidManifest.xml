@@ -22,9 +22,6 @@
             android:name=".itemList"
             android:exported="false" />
         <activity
-            android:name=".HomeFragment"
-            android:exported="false" />
-        <activity
             android:name=".editData"
             android:exported="false" />
         <activity
@@ -32,12 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".detailBerita"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileFragment"
-            android:exported="false" />
-        <activity
-            android:name=".BeritaFragment"
             android:exported="false" />
         <activity
             android:name=".Login"

@@ -12,14 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.dts.pnj.auliyaputriassyfa.model.user;
-import com.example.dts.pnj.auliyaputriassyfa.repository.userRepository;
+import com.example.dts.pnj.auliyaputriassyfa.model.User;
+import com.example.dts.pnj.auliyaputriassyfa.repository.UserRepository;
+
 
 public class editData extends AppCompatActivity {
-    private EditText editNama, editAlamat, editJabatan, editNpm, editTempatLahir, editTglLahir, editNoHP, editPekerjaan, editThnMasuk, editThnLulus;
+    private EditText editName, editAddress, editJabatan, editNim, editTempatLahir, editTglLahir, editTlp, editJob, editMasuk, editLulus;
     private ImageButton btnBack;
     private Button btnSubmit, btnDelete;
-    private userRepository userRepository;
+    private UserRepository userRepository;
     private long userId;
 
     @Override
@@ -32,7 +33,7 @@ public class editData extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        userRepository = new userRepository(this);
+        userRepository = new UserRepository(this);
         userId = getIntent().getLongExtra("USER_ID", -1);
         if (userId == -1) {
             Toast.makeText(this, "Invalid user ID", Toast.LENGTH_SHORT).show();
@@ -46,16 +47,16 @@ public class editData extends AppCompatActivity {
     }
 
     private void initalizeViews() {
-        editNama = findViewById(R.id.editNama);
-        editAlamat = findViewById(R.id.editAlamat);
-        editNpm = findViewById(R.id.editNpm);
+        editName = findViewById(R.id.editName);
+        editAddress = findViewById(R.id.editAddress);
+        editNim = findViewById(R.id.editNim);
         editTempatLahir = findViewById(R.id.editTempatLahir);
         editTglLahir = findViewById(R.id.editTglLahir);
-        editThnMasuk = findViewById(R.id.editThnMasuk);
-        editThnLulus = findViewById(R.id.editThnLulus);
-        editPekerjaan = findViewById(R.id.editPekerjaan);
+        editMasuk = findViewById(R.id.editMasuk);
+        editLulus = findViewById(R.id.editLulus);
+        editJob = findViewById(R.id.editJob);
         editJabatan = findViewById(R.id.editJabatan);
-        editNoHP = findViewById(R.id.editNoHP);
+        editTlp = findViewById(R.id.editTlp);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnBack = findViewById(R.id.btnBack);
         btnDelete = findViewById(R.id.btnDelete);
@@ -63,21 +64,21 @@ public class editData extends AppCompatActivity {
 
     private void initializeOnClickListeners() {
         btnSubmit.setOnClickListener(v -> {
-            String nama = editNama.getText().toString().trim();
-            String alamat = editAlamat.getText().toString().trim();
-            String npm = editNpm.getText().toString().trim();
-            String tempatlahir = editTempatLahir.getText().toString().trim();
-            String tglLahir = editTglLahir.getText().toString().trim();
-            String thnmasuk = editThnMasuk.getText().toString().trim();
-            String thnlulus = editThnLulus.getText().toString().trim();
-            String pekerjaan = editPekerjaan.getText().toString().trim();
-            String jabatan = editJabatan.getText().toString().trim();
-            String noHP = editNoHP.getText().toString().trim();
+            String name = editName.getText().toString().trim();
+            String domisili = editAddress.getText().toString().trim();
+            String nim = editNim.getText().toString().trim();
+            String tmptlahir = editTempatLahir.getText().toString().trim();
+            String tgllahir = editTglLahir.getText().toString().trim();
+            String thnmasuk = editMasuk.getText().toString().trim();
+            String thnlulus = editLulus.getText().toString().trim();
+            String job = editJob.getText().toString().trim();
+            String jbtn = editJabatan.getText().toString().trim();
+            String tlp = editTlp.getText().toString().trim();
 
-            if (nama.isEmpty() || alamat.isEmpty()) {
+            if (name.isEmpty() || domisili.isEmpty()) {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             } else {
-                updateDataToSQLite(userId, nama, alamat, npm, tempatlahir, tglLahir, thnmasuk, thnmasuk, thnlulus, pekerjaan, jabatan, noHP);
+                updateDataToSQLite(userId, name, domisili, nim, tmptlahir, tgllahir, thnmasuk, thnmasuk, thnlulus, job, jbtn, tlp);
                 Toast.makeText(this, "User data updated successfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -101,29 +102,29 @@ public class editData extends AppCompatActivity {
 
     private void loadUserData() {
         userRepository.open();
-        user user = userRepository.getUserById(userId);
+        User user = userRepository.getUserById(userId);
         userRepository.close();
 
         if (user != null) {
-            editNama.setText(user.getNama());
-            editAlamat.setText(user.getAlamat());
-            editNpm.setText(user.getNpm());
-            editThnMasuk.setText(user.getThnMasuk());
-            editThnLulus.setText(user.getThnLulus());
-            editTempatLahir.setText(user.getTempatLahir());
-            editTglLahir.setText(user.getTglLahir());
-            editPekerjaan.setText(user.getPekerjaan());
-            editJabatan.setText(user.getJabatan());
-            editNoHP.setText(user.getNoHP());
+            editName.setText(user.getName());
+            editAddress.setText(user.getDomisili());
+            editNim.setText(user.getNim());
+            editMasuk.setText(user.getMsk());
+            editLulus.setText(user.getLls());
+            editTempatLahir.setText(user.getTmpt());
+            editTglLahir.setText(user.getTgl());
+            editJob.setText(user.getJob());
+            editJabatan.setText(user.getJbtn());
+            editTlp.setText(user.getTlp());
         } else {
             Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
 
-    private void updateDataToSQLite(long id, String nama, String alamat, String nim, String tempatlahir, String tglLahir, String thnmasuk, String  thnlulus, String  pekerjaan, String jabatan, String noHp, String s) {
+    private void updateDataToSQLite(long id, String name, String domisili, String nim, String tmptlahir, String tgllahir, String thnmasuk, String  thnlulus, String  job, String jbtn, String tlp, String s) {
         userRepository.open();
-        userRepository.updateUser(id, nama, alamat, nim, tempatlahir, tglLahir, thnmasuk, thnmasuk, thnlulus, pekerjaan, jabatan, noHp);
+        userRepository.updateUser(id, name, domisili, nim, tmptlahir, tgllahir, thnmasuk, thnmasuk, thnlulus, job, jbtn, tlp);
         userRepository.close();
     }
 }
